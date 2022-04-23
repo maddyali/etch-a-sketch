@@ -1,0 +1,23 @@
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: rgb(250, 243, 223);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 450px;
+}
+.grid {
+  background-color: rgb(168, 38, 255);
+  height: 25px;
+  width: 25px;
+  border: 1px solid white;
+}
