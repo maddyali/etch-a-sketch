@@ -1,13 +1,16 @@
-const gridContainer = document.querySelector(".container");
-// Create 16x16 grid
-function createGrid() {
-  for (let i = 0; i < 256; i++) {
-    let gridItem = document.createElement("div");
+const grid = document.getElementById("grid");
+// Create grid
+function createGrid(size) {
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+  for (let i = 0; i < size * size; i++) {
+    const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
-    gridContainer.appendChild(gridItem);
+    grid.appendChild(gridItem);
   }
 }
-createGrid();
+createGrid(16);
 // Change color of divs on hover
 const gridItems = document.querySelectorAll(".grid-item");
 function paintGrid() {

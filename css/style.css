@@ -10,14 +10,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-.container {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 450px;
-}
 .grid {
+  display: grid;
+  height: 500px;
+  width: 500px;
+}
+.grid-item {
   background-color: rgb(168, 38, 255);
-  height: 25px;
-  width: 25px;
   border: 1px solid white;
+}
+.active {
+  background-color: black;
 }
