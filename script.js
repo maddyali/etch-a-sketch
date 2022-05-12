@@ -14,12 +14,23 @@ function createGrid(size) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
     gridItem.addEventListener("mouseover", changeColor);
+    gridItem.addEventListener("mousedown", changeColor);
     grid.appendChild(gridItem);
   }
 }
 createGrid(currentSize);
 
+// track state of mouse button
+let mouseDown = false;
+document.onmousedown = function () {
+  mouseDown = true;
+};
+document.onmouseup = function () {
+  mouseDown = false;
+};
+
 function changeColor(e) {
+  if (e.type === "mouseover" && !mouseDown) return;
   if (e.target.matches(".grid-item")) {
     e.target.classList.add("active");
   }
