@@ -2,9 +2,12 @@ const grid = document.getElementById("grid");
 const sizeSlider = document.getElementById("sizeSlider");
 const sizeValue = document.getElementById("sizeValue");
 const clearBtn = document.getElementById("clearBtn");
+const eraserBtn = document.getElementById("eraserBtn");
+const colorBtn = document.getElementById("colorBtn");
 
 // global variable
 let currentSize = 16;
+let currentMode = "color";
 
 function createGrid(size) {
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -31,13 +34,19 @@ document.onmouseup = function () {
 
 function changeColor(e) {
   if (e.type === "mouseover" && !mouseDown) return;
-  if (e.target.matches(".grid-item")) {
-    e.target.classList.add("active");
-  }
+  if (currentMode === "color") e.target.classList.add("active");
+  else if (currentMode === "eraser") e.target.classList.remove("active");
 }
+
+function setCurrentMode(newMode) {
+  currentMode = newMode;
+}
+
 sizeSlider.addEventListener("input", (e) => updateSizeValue(e.target.value));
 sizeSlider.addEventListener("input", (e) => changeGridSize(e.target.value));
 clearBtn.onclick = reloadGrid;
+eraserBtn.onclick = () => setCurrentMode("eraser");
+colorBtn.onclick = () => setCurrentMode("color");
 
 function updateSizeValue(value) {
   sizeValue.textContent = `${value} x ${value}`;
