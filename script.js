@@ -32,7 +32,6 @@ function createGrid(size) {
     grid.appendChild(gridItem);
   }
 }
-createGrid(currentSize);
 
 // track state of mouse button
 let mouseDown = false;
@@ -56,9 +55,6 @@ function changeColor(e) {
   }
 }
 
-function setCurrentMode(newMode) {
-  currentMode = newMode;
-}
 function setCurrentColor(newColor) {
   currentColor = newColor;
 }
@@ -76,3 +72,22 @@ function changeGridSize(value) {
   currentSize = value;
   reloadGrid();
 }
+
+function setCurrentMode(newMode) {
+  displayCurrentMode(newMode);
+  currentMode = newMode;
+}
+function displayCurrentMode(newMode) {
+  if (currentMode === "color") colorBtn.classList.remove("active");
+  else if (currentMode === "rainbow") rainbowBtn.classList.remove("active");
+  else if (currentMode === "eraser") eraserBtn.classList.remove("active");
+
+  if (newMode === "color") colorBtn.classList.add("active");
+  else if (newMode === "rainbow") rainbowBtn.classList.add("active");
+  else if (newMode === "eraser") eraserBtn.classList.add("active");
+}
+
+window.onload = () => {
+  createGrid(currentSize);
+  displayCurrentMode(currentMode);
+};
